@@ -10,13 +10,11 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Image {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(256)
-  url       String   @db.VarChar(1024)
-  userId    String   @db.VarChar(256)
-  createdAt DateTime @default(now())
-  updatedAt DateTime?
+model Post {
+    id        Int      @id @default(autoincrement())
+    name      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 
-  @@index([name], name: "name_idx")
+    @@index([name])
 }
